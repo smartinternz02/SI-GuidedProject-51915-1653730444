@@ -1,0 +1,413 @@
+﻿<process name="Hr manage" version="1.0" bpversion="7.0.1.49890" narrative="Hr payroll" byrefcollection="true" type="object" runmode="Exclusive" preferredid="9bccaf8a-f9e2-4f54-b893-8bd70a47e855">
+  <appdef>
+    <element name="Application Root">
+      <id>df452ba1-9607-480d-85b8-ef84a95fd325</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="12f9a284-fc65-4a3c-915f-33a658cc5440" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="cda7864c-d294-47db-9653-2dbe3041f679" type="Normal" published="True">
+    <name>Calculate Payroll Values</name>
+    <view>
+      <camerax>-5</camerax>
+      <cameray>-405</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="da882594-8ffd-456c-bae3-4e6c1f3804cd" type="Normal" published="True">
+    <name>send Mail</name>
+    <view>
+      <camerax>-114</camerax>
+      <cameray>-34</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="1d442398-22d7-45fc-b808-816e06e62ffc" name="Start" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>1c928ec6-106c-4e62-98d1-358bb5fa52ba</onsuccess>
+  </stage>
+  <stage stageid="1c928ec6-106c-4e62-98d1-358bb5fa52ba" name="End" type="End">
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="517b7421-35c4-40a6-935b-29b3ab190fb0" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>visualbasic</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+  </stage>
+  <stage stageid="c5b22ed0-5cdb-4bdf-8d3e-6b8f451fa450" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>12f9a284-fc65-4a3c-915f-33a658cc5440</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="ba8f2944-7efd-42f9-b174-a9bbf73bc1d0" name="Start" type="Start">
+    <subsheetid>12f9a284-fc65-4a3c-915f-33a658cc5440</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>561608a6-76d3-4d5d-855f-a65a4b4b5967</onsuccess>
+  </stage>
+  <stage stageid="561608a6-76d3-4d5d-855f-a65a4b4b5967" name="End" type="End">
+    <subsheetid>12f9a284-fc65-4a3c-915f-33a658cc5440</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="70e77e07-b3f8-4da3-88be-9078c8eae589" name="Calculate Payroll Values" type="SubSheetInfo">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <display x="-210" y="-795" w="150" h="90" />
+  </stage>
+  <stage stageid="b4128574-a270-4276-814f-2072b4e3d5b3" name="Note1" type="Note">
+    <subsheetid>12f9a284-fc65-4a3c-915f-33a658cc5440</subsheetid>
+    <narrative>Clean Up Page
+
+This is an optional page where you might choose to perform some finalisation (or "cleanup") tasks as your business object is closed down.
+
+The cleanup action will be called automatically immediately after closing your business object at the end of a business process.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than before the disposal of the business object.</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="0fa398b1-6c9d-4418-9645-1c4aeef195d3" name="Note2" type="Note">
+    <narrative>Initialise Page
+
+This is an optional page where you might choose to perform some initialisation tasks after your business object is loaded.
+
+The initialise action will be called automatically immediately after loading your business object.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than after the creation of the object.</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="d9a8a8dc-7444-4f82-8ac4-41286a7784a7" name="Start" type="Start">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="15" y="-780" />
+    <inputs>
+      <input type="text" name="&quot;file name&quot;" narrative="use &quot; &quot; to store value of file name" stage="file name" />
+    </inputs>
+    <onsuccess>59dddcfa-306c-4d56-a049-dcbcabe320c0</onsuccess>
+  </stage>
+  <stage stageid="9aafe699-d59a-4070-9749-5dcbe37659f8" name="End" type="End">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="15" y="-285" />
+    <outputs>
+      <output type="collection" name="Data" narrative="data from Employee Collection" stage="Employee" />
+    </outputs>
+  </stage>
+  <stage stageid="59dddcfa-306c-4d56-a049-dcbcabe320c0" name="Create Instance" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-720" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook should be created. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook that Excel has created - this can be changed using the &quot;Save Workbook As&quot; action" stage="" />
+    </outputs>
+    <onsuccess>68fa0d85-9994-4f09-937a-7f93cec7d820</onsuccess>
+    <resource object="MS Excel VBO" action="Create Workbook" />
+  </stage>
+  <stage stageid="85981481-da82-4f28-aef2-72f8fe8a028c" name="handle" type="Data">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <display x="-240" y="-705" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="68fa0d85-9994-4f09-937a-7f93cec7d820" name="Open Excel file" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-675" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" friendlyname="File name" narrative="The path and name of the file which should be opened." expr="&quot;C:\Users\DRAKH\Desktop\payroll.xlsx&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="WorkBook Name" />
+    </outputs>
+    <onsuccess>ea5a0cb1-b703-4e88-88ee-3eef037a3b1b</onsuccess>
+    <resource object="MS Excel VBO" action="Open Workbook" />
+  </stage>
+  <stage stageid="7016258b-4310-4d26-837b-b5b118ed17d0" name="WorkBook Name" type="Data">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <display x="-165" y="-705" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="ea5a0cb1-b703-4e88-88ee-3eef037a3b1b" name="Get to collection" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-630" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the worksheet which should be retrieved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which contains the sheet required. The default empty text indicates the currently active workbook on the specified instance." expr="[WorkBook Name]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet within the specified workbook which should be written to a collection. The default empty text indicates the currently active worksheet within the specified workbook." expr="&quot;Sheet1&quot;" />
+      <input type="text" name="Fetch Data With Method" friendlyname="Fetch Data With Method" narrative="The method used to fetch data from cells in the worksheet. Options include Text, Value, and Value2. The default indicates Value will be used." expr="" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="The collection containing the data from the specified worksheet - the column IDs will be gleaned from the first row on the sheet being retrieved." stage="Employee" />
+    </outputs>
+    <onsuccess>994da3bf-600c-4c28-8416-47fc13de3869</onsuccess>
+    <resource object="MS Excel VBO" action="Get Worksheet As Collection" />
+  </stage>
+  <stage stageid="52c8d7d4-a6c4-4665-8d34-7fad25c9ce52" name="Employee" type="Collection">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <display x="-240" y="-660" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="EMP ID" type="number" description="Employee ID" />
+      <field name="EMP NAME" type="text" description="Name of the employee" />
+      <field name="SALARY RATE BASIC" type="number" description="Basic salary rate" />
+      <field name="SALARY RATE DA" type="number" description="Salary rate for DA" />
+      <field name="SALARY RATE HRA" type="number" />
+      <field name="TOTAL SALARY" type="number" />
+      <field name="ATTEND P" type="number" />
+      <field name="ATTEND PL" type="number" />
+      <field name="ATTEND WO" type="number" />
+      <field name="ATTEND PD" type="number" />
+      <field name="GROSS BASIC" type="number" />
+      <field name="GROSS DA" type="number" />
+      <field name="GROSS HRA" type="number" />
+      <field name="INCENTIVE" type="number" />
+      <field name="TOTAL GROSS" type="number" />
+      <field name="ESI AMOUNT" type="number" />
+      <field name="PF AMOUNT" type="number" />
+      <field name="TDS" type="number" />
+      <field name="PT" type="number" />
+      <field name="TOTAL DED" type="number" />
+      <field name="NET SALARY" type="number" />
+    </collectioninfo>
+  </stage>
+  <stage stageid="994da3bf-600c-4c28-8416-47fc13de3869" name="Loop Start1" type="LoopStart">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="15" y="-585" />
+    <onsuccess>814b4574-854c-45c1-ac08-44f0811cba30</onsuccess>
+    <groupid>c77ad040-33b8-4124-9194-25d7393e6397</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Employee</loopdata>
+  </stage>
+  <stage stageid="ce5bc2d5-63db-4ac9-947a-edcf612c8069" name="Loop End1" type="LoopEnd">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="15" y="-495" />
+    <onsuccess>bf48924b-5195-42a1-b5cb-17e8a7ef4098</onsuccess>
+    <groupid>c77ad040-33b8-4124-9194-25d7393e6397</groupid>
+  </stage>
+  <stage stageid="814b4574-854c-45c1-ac08-44f0811cba30" name="Multi1" type="MultipleCalculation">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="15" y="-540" />
+    <onsuccess>ce5bc2d5-63db-4ac9-947a-edcf612c8069</onsuccess>
+    <steps>
+      <calculation expression="[Employee.SALARY RATE BASIC]*0.1" stage="Employee.SALARY RATE DA" />
+      <calculation expression="([Employee.SALARY RATE BASIC]+[Employee.SALARY RATE DA])*0.3" stage="Employee.SALARY RATE HRA" />
+      <calculation expression="[Employee.SALARY RATE BASIC]+[Employee.SALARY RATE DA]+[Employee.SALARY RATE HRA]" stage="Employee.TOTAL SALARY" />
+      <calculation expression="[Employee.ATTEND P]+[Employee.ATTEND PL]+[Employee.ATTEND WO]" stage="Employee.ATTEND PD" />
+      <calculation expression="([Employee.SALARY RATE BASIC]*[Employee.ATTEND PD])/31" stage="Employee.GROSS BASIC" />
+      <calculation expression="([Employee.SALARY RATE DA]*[Employee.ATTEND PD])/31" stage="Employee.GROSS DA" />
+      <calculation expression="([Employee.SALARY RATE HRA]*[Employee.ATTEND PD])/31" stage="Employee.GROSS HRA" />
+      <calculation expression="[Employee.GROSS BASIC]+[Employee.GROSS DA]+[Employee.GROSS HRA]+[Employee.INCENTIVE]" stage="Employee.TOTAL GROSS" />
+      <calculation expression="[Employee.TOTAL GROSS]*0.0075" stage="Employee.ESI AMOUNT" />
+      <calculation expression="([Employee.GROSS BASIC]+[Employee.GROSS DA])*0.12" stage="Employee.PF AMOUNT" />
+      <calculation expression="[Employee.ESI AMOUNT]+[Employee.PF AMOUNT]+[Employee.TDS]+[Employee.PT]" stage="Employee.TOTAL DED" />
+      <calculation expression="[Employee.TOTAL GROSS]-[Employee.TOTAL DED]" stage="Employee.NET SALARY" />
+    </steps>
+  </stage>
+  <stage stageid="bf48924b-5195-42a1-b5cb-17e8a7ef4098" name="Write Collection" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-450" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the specified collection should be written. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook within which the data should be written. The default empty value indicates the current workbook within the specified instance." expr="[WorkBook Name]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet on which the given data should be written. The default empty value indicates the current sheet within the specified workbook." expr="&quot;Sheet1&quot;" />
+      <input type="collection" name="Collection" friendlyname="Collection" narrative="The collection containing the data which should be written to the worksheet." expr="[Employee]" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference at which the collection should be written." expr="&quot;A1&quot;" />
+      <input type="flag" name="Include Column Names" friendlyname="Include Column Names" narrative="True to indicate that the column names from the collection should be written out as the first row; False to ignore the column names and just write out the data." expr="True" />
+    </inputs>
+    <onsuccess>f0f9048b-f8a0-4a92-9277-eba393bcefe5</onsuccess>
+    <resource object="MS Excel VBO" action="Write Collection" />
+  </stage>
+  <stage stageid="f0f9048b-f8a0-4a92-9277-eba393bcefe5" name="Save Excel file" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-405" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be saved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be saved" expr="[WorkBook Name]" />
+    </inputs>
+    <onsuccess>905835e4-edb3-46ce-9b4d-427aed2f8e13</onsuccess>
+    <resource object="MS Excel VBO" action="Save Workbook" />
+  </stage>
+  <stage stageid="905835e4-edb3-46ce-9b4d-427aed2f8e13" name="Close Workbook" type="Action">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-345" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <onsuccess>9aafe699-d59a-4070-9749-5dcbe37659f8</onsuccess>
+    <resource object="MS Excel VBO" action="Close Current Workbook" />
+  </stage>
+  <stage stageid="9a0a6f6e-609a-403c-ab05-ae9c1f775bec" name="file name" type="Data">
+    <subsheetid>cda7864c-d294-47db-9653-2dbe3041f679</subsheetid>
+    <loginhibit />
+    <display x="-180" y="-660" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">"C:\Users\DRAKH\Desktop\payroll.xlsx"</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="edcf7a6b-c665-4613-8b15-11515cc39e35" name="send Mail" type="SubSheetInfo">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="40d6cf5f-6311-4bbe-8556-561a91eb78f5" name="Start" type="Start">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <inputs>
+      <input type="text" name="file path" stage="file path" />
+      <input type="text" name="emailID" stage="emailID" />
+      <input type="password" name="password" stage="password" />
+      <input type="text" name="smtpServer" stage="smtpServer" />
+      <input type="text" name="to" narrative="send email to" stage="to" />
+    </inputs>
+    <onsuccess>d619f9d2-acd4-4ada-b55a-8f9621ae2257</onsuccess>
+  </stage>
+  <stage stageid="dd1fba03-cf7a-4aed-89a0-2d34e6b7afd0" name="End" type="End">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit />
+    <display x="15" y="120" />
+  </stage>
+  <stage stageid="d619f9d2-acd4-4ada-b55a-8f9621ae2257" name="config" type="Action">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <inputs>
+      <input type="text" name="Username" friendlyname="Username" narrative="The POP3 and SMTP Username" expr="[emailID]" />
+      <input type="password" name="Password" friendlyname="Password" narrative="The POP3 and SMTP Password" expr="[password]" />
+      <input type="text" name="POP3 Server" friendlyname="POP3 Server" narrative="The POP3 Server address e.g. pop.domain.com" expr="" />
+      <input type="text" name="SMTP Server" friendlyname="SMTP Server" narrative="The SMTP Server address e.g. smtp.domain.com" expr="[smtpServer]" />
+      <input type="number" name="POP3 Port" friendlyname="POP3 Port" narrative="The POP3 Port, e.g. 110 or 995" expr="" />
+      <input type="number" name="SMTP Port" friendlyname="SMTP Port" narrative="The SMTP Port, e.g 25 or 465" expr="587" />
+      <input type="flag" name="POP3 UseSSL" friendlyname="POP3 UseSSL" narrative="Whether to use SSL for POP3" expr="" />
+      <input type="flag" name="SMTP UseSSL" friendlyname="SMTP UseSSL" narrative="Whether to use SSL for SMTP" expr="True" />
+    </inputs>
+    <onsuccess>dbde0717-8b82-4803-b4ea-0d79c992d20e</onsuccess>
+    <resource object="Email - POP3/SMTP" action="Configure" />
+  </stage>
+  <stage stageid="cc54dc50-a69d-4ef8-9651-3fc574cf214a" name="password" type="Data">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <display x="-150" y="30" />
+    <datatype>password</datatype>
+    <initialvalueenc>0,27,18,81,12,71,52,84,115,70</initialvalueenc>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="6d53dfa3-7671-44f4-8170-9e5483b1404c" name="Email - POP3/SMTP::Send Message" type="Action">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="60" />
+    <inputs>
+      <input type="text" name="From" friendlyname="From" narrative="The email address of the sender." expr="[emailID]" />
+      <input type="text" name="To" friendlyname="To" narrative="The email address of the recipient. To address multiple recipients use the format &quot;john.smith@example.com, henry.jones@example.com&quot; OR &quot;John Smith &lt;john.smith@example.com&gt;, Henry Jones &lt;henry.jones@example.com&gt;&quot;." expr="[to]" />
+      <input type="text" name="Subject" friendlyname="Subject" narrative="The subject of the email." expr="&quot;automated payroll calulation&quot;" />
+      <input type="text" name="Body" friendlyname="Body" narrative="The body of the email." expr="&quot;this is my report for payroll attached in mail&quot;" />
+      <input type="collection" name="Attachments" friendlyname="Attachments" narrative="A Collection containing a list of files to add to the email as attachments." expr="[Coll1]" />
+      <input type="flag" name="BodyIsHTML" friendlyname="BodyIsHTML" narrative="Indicates if the body should be sent as HTML" expr="False" />
+    </inputs>
+    <onsuccess>dd1fba03-cf7a-4aed-89a0-2d34e6b7afd0</onsuccess>
+    <resource object="Email - POP3/SMTP" action="Send Message" />
+  </stage>
+  <stage stageid="caa49e36-afe5-4f25-81c0-093a234dd944" name="Coll1" type="Collection">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit />
+    <display x="-150" y="-15" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Path" type="text" />
+    </collectioninfo>
+    <initialvalue>
+      <row>
+        <field name="Path" type="text" value="" />
+      </row>
+    </initialvalue>
+  </stage>
+  <stage stageid="e4f9c655-5594-4c37-9fdf-456b48a73b2e" name="file path" type="Data">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit />
+    <display x="90" y="0" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="dbde0717-8b82-4803-b4ea-0d79c992d20e" name="Calc1" type="Calculation">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <loginhibit />
+    <display x="15" y="0" />
+    <onsuccess>6d53dfa3-7671-44f4-8170-9e5483b1404c</onsuccess>
+    <calculation expression="[file path]" stage="Coll1.Path" />
+  </stage>
+  <stage stageid="06fd8108-1b93-48f2-aa8c-3140ed1392d5" name="emailID" type="Data">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <display x="-240" y="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">contact@anfaasqureshi.tech</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="5dd1fe2c-5095-4e6c-8cfe-46224a474287" name="smtpServer" type="Data">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <display x="-240" y="-15" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">mx.stackmail.com</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9cb97877-881d-4c6a-8d4f-d03425274b98" name="to" type="Data">
+    <subsheetid>da882594-8ffd-456c-bae3-4e6c1f3804cd</subsheetid>
+    <display x="-240" y="75" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">anfaasqureshi2019@gmail.com</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+</process>

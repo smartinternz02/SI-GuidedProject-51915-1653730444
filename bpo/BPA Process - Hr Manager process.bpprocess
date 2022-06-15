@@ -1,0 +1,134 @@
+﻿<process name="Hr Manager process" version="1.0" bpversion="7.0.1.49890" narrative="hr manager payroll&#xD;&#xA;" byrefcollection="true" preferredid="3566a76f-4a7d-45da-875b-e17791697eec">
+  <view>
+    <camerax>0</camerax>
+    <cameray>105</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="84d5e243-c91b-4120-9c79-1450a820cb60" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>4dca4366-a144-4526-8639-87f9d3a1a92f</onsuccess>
+  </stage>
+  <stage stageid="b18a5d18-d3d7-4851-829e-6076049e7ca2" name="End" type="End">
+    <display x="15" y="135" />
+  </stage>
+  <stage stageid="03d94416-1c7a-4147-8a99-fefe6c32f162" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="4dca4366-a144-4526-8639-87f9d3a1a92f" name="Hr process" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-30" />
+    <inputs>
+      <input type="text" name="&quot;file name&quot;" friendlyname="&quot;file name&quot;" narrative="use &quot; &quot; to store value of file name" expr="[Link to file path &quot;&quot;]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="data from Employee Collection" stage="Employee" />
+    </outputs>
+    <onsuccess>63dcf750-ee9e-4657-848a-cc7fa66b91f1</onsuccess>
+    <resource object="Hr manage" action="Calculate Payroll Values" />
+  </stage>
+  <stage stageid="1815dfbb-60a9-42f1-bfe9-5201463c0b02" name="Employee" type="Collection">
+    <display x="-165" y="-30" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="EMP ID" type="number" description="Employee ID" />
+      <field name="EMP NAME" type="text" description="Name of the employee" />
+      <field name="SALARY RATE BASIC" type="number" description="Basic salary rate" />
+      <field name="SALARY RATE DA" type="number" description="Salary rate for DA" />
+      <field name="SALARY RATE HRA" type="number" />
+      <field name="TOTAL SALARY" type="number" />
+      <field name="ATTEND P" type="number" />
+      <field name="ATTEND PL" type="number" />
+      <field name="ATTEND WO" type="number" />
+      <field name="ATTEND PD" type="number" />
+      <field name="GROSS BASIC" type="number" />
+      <field name="GROSS DA" type="number" />
+      <field name="GROSS HRA" type="number" />
+      <field name="INCENTIVE" type="number" />
+      <field name="TOTAL GROSS" type="number" />
+      <field name="ESI AMOUNT" type="number" />
+      <field name="PF AMOUNT" type="number" />
+      <field name="TDS" type="number" />
+      <field name="PT" type="number" />
+      <field name="TOTAL DED" type="number" />
+      <field name="NET SALARY" type="number" />
+    </collectioninfo>
+  </stage>
+  <stage stageid="892cd87f-2ce4-4fe8-9777-d1df63edea7a" name="Link to file" type="Data">
+    <narrative>link to your file you just calcuated values for ( do not give double quotes)</narrative>
+    <display x="-225" y="-30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">C:\Users\DRAKH\Desktop\payroll.xlsx</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="63dcf750-ee9e-4657-848a-cc7fa66b91f1" name="Hr details filled Alert" type="Alert">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="30" />
+    <onsuccess>d8ef1de5-2885-45bc-b531-d0ff7b04463a</onsuccess>
+    <alert expression="" />
+  </stage>
+  <stage stageid="d8ef1de5-2885-45bc-b531-d0ff7b04463a" name="send mail" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="75" />
+    <inputs>
+      <input type="text" name="file path" friendlyname="file path" expr="[Link to file]" />
+      <input type="text" name="emailID" friendlyname="emailID" expr="[EmailID]" />
+      <input type="password" name="password" friendlyname="password" expr="[Password]" />
+      <input type="text" name="smtpServer" friendlyname="smtpServer" expr="[smtp server]" />
+      <input type="text" name="to" friendlyname="to" narrative="send email to" expr="[to_hr]" />
+    </inputs>
+    <onsuccess>b18a5d18-d3d7-4851-829e-6076049e7ca2</onsuccess>
+    <resource object="Hr manage" action="send Mail" />
+  </stage>
+  <stage stageid="4995652a-41ae-4f92-baa5-38cc3b099270" name="EmailID" type="Data">
+    <loginhibit onsuccess="true" />
+    <narrative>gmail id wont work as it has disabled the feature of less secure app so you need to have your own smtp server or some other server which has less secure app permission
+
+incase of trying do not change this email initial values</narrative>
+    <display x="-240" y="15" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">contact@anfaasqureshi.tech</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="89a278e4-8871-4396-986d-ecec14165566" name="Password" type="Data">
+    <loginhibit onsuccess="true" />
+    <narrative>password of your bot account or your email id password </narrative>
+    <display x="-165" y="15" />
+    <datatype>password</datatype>
+    <initialvalueenc>0,27,18,81,12,71,52,84,115,70</initialvalueenc>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="31462387-89aa-4f4c-b478-cec2d50d0f6d" name="smtp server" type="Data">
+    <loginhibit onsuccess="true" />
+    <narrative>your smtp server</narrative>
+    <display x="-240" y="60" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">mx.stackmail.com</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="9750ff0f-979d-4078-859a-78daee0e8cb8" name="Link to file path &quot;&quot;" type="Data">
+    <loginhibit onsuccess="true" />
+    <narrative>data should be wrapped in " (double quotes) </narrative>
+    <display x="-285" y="-30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">"C:\Users\DRAKH\Desktop\payroll.xlsx"</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="2fad3c2d-51b9-4f32-bcea-cc3a4dc5e2ab" name="to_hr" type="Data">
+    <loginhibit onsuccess="true" />
+    <narrative>email id of HR</narrative>
+    <display x="-300" y="15" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">anfaasqureshi2019@gmail.com</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
